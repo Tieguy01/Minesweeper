@@ -84,12 +84,14 @@ public class Minesweeper {
 		return coordinates;
 	}
 
-	public static String[][] game(String[][] board, int[][] numberBoard) {
+	public static void game(String[][] board, int[][] numberBoard) {
 		boolean boom = false;
 		boolean winner = false;
 		while (!boom && !winner) {
-			boolean invalid = false;
+			System.out.println(boom);
+			boolean invalid;
 			do {
+				invalid = false;
 				boolean shouldReveal = revealOrFlag();
 				int[] coordinates = click();
 				int row = coordinates[0];
@@ -119,10 +121,9 @@ public class Minesweeper {
 					}
 				}
 				printBoard(board);
-			} while (!invalid);
+			} while (invalid);
 			printBoard(board);
 		}
-		return board;
 	}
 
 	public static int findAroundBombs(int[][] bombBoard, int row, int col) {
